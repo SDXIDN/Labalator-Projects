@@ -1,0 +1,4 @@
+﻿  lab #9.cpp
+C:\Users\User\source\repos\lab (101,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\source\repos\lab (104,1): error C4700: uninitialized local variable 'i' used
+C:\Users\User\source\repos\lab (111,1): error C4700: uninitialized local variable 'i' used

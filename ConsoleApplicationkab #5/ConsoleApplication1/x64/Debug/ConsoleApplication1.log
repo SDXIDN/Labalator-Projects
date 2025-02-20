@@ -1,0 +1,4 @@
+﻿  ConsoleApplication1.cpp
+C:\Users\User\source\repos\ConsoleApplicationkab (10,31): warning C4101: 'k': unreferenced local variable
+C:\Users\User\source\repos\ConsoleApplicationkab (10,34): warning C4101: 'j': unreferenced local variable
+  ConsoleApplication1.vcxproj -> C:\Users\User\source\repos\ConsoleApplicationkab #5\x64\Debug\ConsoleApplication1.exe
