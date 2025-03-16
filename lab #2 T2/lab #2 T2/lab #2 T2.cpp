@@ -24,7 +24,7 @@ public:
 
    
     void display() const {
-        cout << "Ïîòÿã: " << route << ", ×àñ ïðèáóòòÿ: " << timed << "\n";
+        cout << "ÐŸÐ¾Ñ‚ÑÐ³: " << route << ", Ð§Ð°Ñ Ð¿Ñ€Ð¸Ð±ÑƒÑ‚Ñ‚Ñ: " << timed << "\n";
     }
 
     
@@ -33,14 +33,14 @@ public:
 
   
     friend ostream& operator<<(ostream& os, const Race& race) {
-        os << "Ïîòÿã: " << race.route << ", ×àñ ïðèáóòòÿ: " << race.timed;
+        os << "ÐŸÐ¾Ñ‚ÑÐ³: " << race.route << ", Ð§Ð°Ñ Ð¿Ñ€Ð¸Ð±ÑƒÑ‚Ñ‚Ñ: " << race.timed;
         return os;
     }
 
     friend istream& operator>>(istream& is, Race& race) {
-        cout << "Ââåä³òü ìàðøðóò: ";
+        cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚: ";
         is >> race.route;
-        cout << "Ââåä³òü ÷àñ ïðèáóòòÿ: ";
+        cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ñ‡Ð°Ñ Ð¿Ñ€Ð¸Ð±ÑƒÑ‚Ñ‚Ñ: ";
         is >> race.timed;
         return is;
     }
@@ -48,7 +48,7 @@ public:
    
     ~Race() {
         raceCount--;
-        cout << "Race îá'ºêò çíèùåíî.\n";
+        cout << "Race Ð¾Ð±'Ñ”ÐºÑ‚ Ð·Ð½Ð¸Ñ‰ÐµÐ½Ð¾.\n";
     }
 };
 
@@ -71,28 +71,28 @@ public:
     Customer(Customer&& other) noexcept : name(move(other.name)), age(other.age) {}
 
     void display() const {
-        cout << "Êë³ºíò: " << name << ", Â³ê: " << age << "\n";
+        cout << "ÐšÐ»Ñ–Ñ”Ð½Ñ‚: " << name << ", Ð’Ñ–Ðº: " << age << "\n";
     }
 
     friend ostream& operator<<(ostream& os, const Customer& customer) {
-        os << "Êë³ºíò: " << customer.name << ", Â³ê: " << customer.age;
+        os << "ÐšÐ»Ñ–Ñ”Ð½Ñ‚: " << customer.name << ", Ð’Ñ–Ðº: " << customer.age;
         return os;
     }
 
     friend istream& operator>>(istream& is, Customer& customer) {
-        cout << "Ââåä³òü ³ì'ÿ êë³ºíòà: ";
+        cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ñ–Ð¼'Ñ ÐºÐ»Ñ–Ñ”Ð½Ñ‚Ð°: ";
         is >> customer.name;
-        cout << "Ââåä³òü â³ê: ";
+        cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð²Ñ–Ðº: ";
         is >> customer.age;
         return is;
     }
 
     void showThis() const {
-        cout << "Àäðåñà îá'ºêòà Customer (this): " << this << endl;
+        cout << "ÐÐ´Ñ€ÐµÑÐ° Ð¾Ð±'Ñ”ÐºÑ‚Ð° Customer (this): " << this << endl;
     }
 
     ~Customer() {
-        cout << "Customer îá'ºêò çíèùåíî.\n";
+        cout << "Customer Ð¾Ð±'Ñ”ÐºÑ‚ Ð·Ð½Ð¸Ñ‰ÐµÐ½Ð¾.\n";
     }
 };
 
@@ -111,14 +111,14 @@ public:
     Reservation(Reservation&& other) noexcept : customer(move(other.customer)), race(move(other.race)), bookingDate(move(other.bookingDate)) {}
 
     void display() const {
-        cout << "Áðîíþâàííÿ: \n";
+        cout << "Ð‘Ñ€Ð¾Ð½ÑŽÐ²Ð°Ð½Ð½Ñ: \n";
         customer.display();
         race.display();
-        cout << "Äàòà áðîíþâàííÿ: " << bookingDate << "\n";
+        cout << "Ð”Ð°Ñ‚Ð° Ð±Ñ€Ð¾Ð½ÑŽÐ²Ð°Ð½Ð½Ñ: " << bookingDate << "\n";
     }
 
     ~Reservation() {
-        cout << "Reservation îá'ºêò çíèùåíî.\n";
+        cout << "Reservation Ð¾Ð±'Ñ”ÐºÑ‚ Ð·Ð½Ð¸Ñ‰ÐµÐ½Ð¾.\n";
     }
 };
 
@@ -139,7 +139,7 @@ int main() {
     Reservation reservation1(customer1, race1, "2023-10-30");
     reservation1.display();
 
-    cout << "Ê³ëüê³ñòü îá'ºêò³â Race: " << Race::getRaceCount() << endl;
+    cout << "ÐšÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ð¾Ð±'Ñ”ÐºÑ‚Ñ–Ð² Race: " << Race::getRaceCount() << endl;
 
     Customer customer2("John", 25);
     customer2.display();
