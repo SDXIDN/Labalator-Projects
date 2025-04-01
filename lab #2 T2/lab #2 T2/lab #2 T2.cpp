@@ -1,51 +1,18 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-class Race {
-private:
-    string route;
-    string timed;
-    static int raceCount;
 
+
+class IPrintable {
 public:
-    Race() : route("Unknown"), timed("00:00") { raceCount++; }
-    Race(string a, string b) : route(a), timed(b) { raceCount++; }
-    Race(const Race& other) : route(other.route), timed(other.timed) { raceCount++; }
-    Race(Race&& other) noexcept : route(move(other.route)), timed(move(other.timed)) { raceCount++; }
-
-    static int getRaceCount() { return raceCount; }
-
-    void display() const {
-        cout << "Train: " << route << ", Arrival time: " << timed << "\n";
-    }
-
-    Race operator+() const { return *this; }
-    Race operator+(const Race& other) const { return Race(this->route + " & " + other.route, this->timed); }
-
-    friend ostream& operator<<(ostream& os, const Race& race) {
-        os << "Train: " << race.route << ", Arrival time: " << race.timed;
-        return os;
-    }
-
-    friend istream& operator>>(istream& is, Race& race) {
-        cout << "Enter a route: ";
-        is >> race.route;
-        cout << "Enter arrival time: ";
-        is >> race.timed;
-        return is;
-    }
-
-    ~Race() {
-        raceCount--;
-        cout << "Race object destroyed.\n";
-    }
+    virtual void display() const = 0;
+    virtual void printInfo() const = 0;
+    virtual void print() const = 0;
+    virtual ~IPrintable() = default;
 };
 
-int Race::raceCount = 0;
-
-class Person {
+class Person : public IPrintable {
 protected:
     string name;
     int age;
@@ -56,39 +23,22 @@ public:
     Person(const Person& other) : name(other.name), age(other.age) {}
     Person(Person&& other) noexcept : name(move(other.name)), age(other.age) {}
 
-    // Доданий оператор копіювання
-    Person& operator=(const Person& other) {
-        if (this != &other) {
-            name = other.name;
-            age = other.age;
-        }
-        return *this;
+    virtual void display() const {
+        cout << "Client: " << name << ", Age: " << age << "\n" << "\n";
     }
 
-    void display() const {
-        cout << "Client: " << name << ", Age: " << age << "\n";
-    }
-
-    friend ostream& operator<<(ostream& os, const Person& person) {
-        os << "Client: " << person.name << ", Age: " << person.age;
-        return os;
-    }
-
-    friend istream& operator>>(istream& is, Person& person) {
-        cout << "Enter customer name: ";
-        is >> person.name;
-        cout << "Enter age: ";
-        is >> person.age;
-        return is;
-    }
-
-    void showThis() const {
-        cout << "Object address (this): " << this << endl;
-    }
 
     virtual ~Person() {
-        cout << "Person object destroyed.\n";
+        // cout << "Person object destroyed.\n";
     }
+
+
+    virtual void printInfo() const = 0;
+
+    void print() const override {
+        cout << "Printing Person: " << name << "\n" << "\n";
+    }
+
 };
 
 class Customer : public Person {
@@ -100,92 +50,87 @@ public:
     Customer() : Person(), phoneNumber("Unknown"), balance(0) {}
     Customer(string name, int age, string phone, int bal) : Person(name, age), phoneNumber(phone), balance(bal) {}
 
-    Customer(const Customer& other) = default;  // Додаємо конструктор копіювання
-
-    // Оператор присвоєння для копіювання
-    Customer& operator=(const Customer& other) {  
-        if (this != &other) { 
-            Person::operator=(other);  
-            phoneNumber = other.phoneNumber;  
-            balance = other.balance;  
-        }  
-        return *this;
-    }  
-
-    // Оператор присвоєння для переміщення  
-    Customer& operator=(Customer&& other) noexcept {  
-        if (this != &other) { 
-            Person::operator=(move(other)); 
-            phoneNumber = move(other.phoneNumber);  
-            balance = other.balance;
-            other.balance = 0; 
-        }  
-        return *this; 
-    }  
-  
-    void display() const {
-        cout << "Client: " << name << ", Age: " << age << ", Phone: " << phoneNumber << ", Balance: " << balance << "\n";
+    void display() const override {
+        cout << "Client: " << name << ", Age: " << age << ", Phone: " << phoneNumber << ", Balance: " << balance << "\n" << "\n";
     }
 
-    friend ostream& operator<<(ostream& os, const Customer& customer) {
-        os << "Client: " << customer.name << ", Age: " << customer.age << ", Phone: " << customer.phoneNumber << ", Balance: " << customer.balance;
-        return os;
+    void printInfo() const override {
+        cout << "Customer Info: " << name << " - Balance: " << balance << "\n" << "\n";
     }
 
-    friend istream& operator>>(istream& is, Customer& customer) {
-        cout << "Enter Client name: ";
-        is >> customer.name;
-        cout << "Enter age: ";
-        is >> customer.age;
-        cout << "Enter phone number: ";
-        is >> customer.phoneNumber;
-        cout << "Enter balance: ";
-        is >> customer.balance;
-        return is;
+
+    void print() const override final {
+        cout << "Printing Customer: " << name << "\n" << "\n";
     }
+
 
     ~Customer() {
-        cout << "Customer object destroyed.\n";
+        // cout << "Customer object destroyed.\n";
     }
 };
 
-class Reservation {
+class Race : public IPrintable {
 private:
-    const Customer& customer;  // Використовуємо посилання на Customer
-    Race race;
-    string bookingDate;
+    string route;
+    string timed;
+    static int raceCount;
 
 public:
-    Reservation(const Customer& c, Race r, string date) 
-        : customer(c), race(r), bookingDate(date) {}
+    Race() : route("Unknown"), timed("00:00") { raceCount++; }
+    Race(string a, string b) : route(a), timed(b) { raceCount++; }
 
-    void display() const {
-        cout << "Booking: \n";
-        customer.display();
-        race.display();
-        cout << "Booking date: " << bookingDate << "\n";
+    static int getRaceCount() { return raceCount; }
+
+    void display() const override {
+        cout << "Train: " << route << ", Arrival time: " << timed << "\n" << "\n";
     }
 
-    ~Reservation() {
-        cout << "Reservation object destroyed.\n";
+    void print() const override {
+        cout << "Printing Race: " << route << "\n" << "\n";
+    }
+
+    void printInfo() const override {
+        cout << "Race Info: " << route << ", Arrival time: " << timed << "\n" << "\n";
+    }
+
+    ~Race() {
+        raceCount--;
+        //cout << "Race object destroyed.\n";  
     }
 };
 
+int Race::raceCount = 0;
+
+void PrintInfopPerson(Person& person) {
+
+    person.display();
+}
+
 int main() {
-    Race race1("City-city", "20:30");
-    race1.display();
-
     Customer customer1("Alex", 30, "123-456-789", 100);
-    customer1.display();
+    // customer1.display();
 
-    Reservation reservation1(customer1, race1, "2023-10-30");
-    reservation1.display();
+    // PrintInfopPerson(customer1);
 
-    cout << "Number of Race objects: " << Race::getRaceCount() << endl;
+    Person* personPtr = &customer1;
+    // personPtr->display(); 
+    // personPtr->printInfo();
+    // personPtr->print();
 
-    Customer customer2("John", 25, "987-654-321", 200);
-    customer2.display();
-    customer2.showThis();
+    IPrintable* printablePtr = &customer1;
+    // printablePtr->display(); 
+    // printablePtr->printInfo();
+    // printablePtr->print();
+
+    Race race2("City-city", "20:30");
+    // race2.display();
+
+    printablePtr = &race2;
+    // printablePtr->print();
+    // printablePtr->display(); 
+    // printablePtr->printInfo();
+
+    cout << "Number of Race objects: " << Race::getRaceCount() << endl << endl;
 
     return 0;
 }

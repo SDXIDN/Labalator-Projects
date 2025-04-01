@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\lab #2 T2\\",
+  "WorkspaceRootPath": "C:\\Users\\User\\file\\Labalator-Projects\\lab #2 T2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9DE39F5-BA0E-4745-872D-2A349AC7E11E}|lab #2 T2\\lab #2 T2.vcxproj|C:\\Users\\User\\source\\repos\\lab #2 T2\\lab #2 T2\\lab #2 T2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{B9DE39F5-BA0E-4745-872D-2A349AC7E11E}|lab #2 T2\\lab #2 T2.vcxproj|C:\\Users\\User\\file\\Labalator-Projects\\lab #2 T2\\lab #2 T2\\lab #2 T2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B9DE39F5-BA0E-4745-872D-2A349AC7E11E}|lab #2 T2\\lab #2 T2.vcxproj|solutionrelative:lab #2 T2\\lab #2 T2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "lab #2 T2.cpp",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\lab #2 T2\\lab #2 T2\\lab #2 T2.cpp",
+              "DocumentMoniker": "C:\\Users\\User\\file\\Labalator-Projects\\lab #2 T2\\lab #2 T2\\lab #2 T2.cpp",
               "RelativeDocumentMoniker": "lab #2 T2\\lab #2 T2.cpp",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\lab #2 T2\\lab #2 T2\\lab #2 T2.cpp",
-              "RelativeToolTip": "lab #2 T2\\lab #2 T2.cpp",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAGAAAAACAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\User\\file\\Labalator-Projects\\lab #2 T2\\lab #2 T2\\lab #2 T2.cpp*",
+              "RelativeToolTip": "lab #2 T2\\lab #2 T2.cpp*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-16T16:41:36.496Z",
               "EditorCaption": ""
